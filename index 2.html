@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>frAnk — beta access</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,800;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{min-height:100%;background:#1c3a2a;font-family:'Barlow Condensed',sans-serif;color:#f5f0e8;}
+.page{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;}
+input{width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:5px;padding:13px 14px;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:20px;color:#fff;outline:none;transition:border-color 0.15s,background 0.15s;letter-spacing:0.02em;}
+input::placeholder{color:rgba(255,255,255,0.18);font-weight:400;}
+input:focus{border-color:#b8e832;background:rgba(255,255,255,0.1);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+<div class="page">
+<!-- SCREEN 1: Welcome -->
+  <div id="ob-welcome" style="width:100%;max-width:340px;display:flex;flex-direction:column;align-items:center;text-align:center;">
+    <!-- Logo + tagline -->
+    <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:64px;letter-spacing:-0.02em;color:#b8e832;line-height:1;margin-bottom:4px;">fr<span style="color:#fff;">A</span>nk</div>
+    <div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.12em;margin-bottom:44px;">we'll give it to you straight.</div>
+
+    <!-- Hero headline -->
+    <div style="width:100%;text-align:center;margin-bottom:14px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:36px;color:#fff;text-transform:uppercase;line-height:1.1;letter-spacing:-0.01em;white-space:nowrap;">someone vouched for you.</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:23px;color:rgba(255,255,255,0.65);text-transform:uppercase;line-height:1.2;letter-spacing:0.08em;white-space:nowrap;">don't make it weird.</div>
+    </div>
+
+    <!-- Short pitch -->
+    <div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.45);line-height:1.85;margin-bottom:36px;">the best spots. straight from the people who actually go there. no scrolling through five apps to find out where to eat tonight.</div>
+
+    <!-- CTA -->
+    <button onclick="showOBScreen('ob-profile')" style="width:100%;background:#b8e832;color:#1c3a2a;border:none;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18px;text-transform:uppercase;padding:15px;border-radius:5px;cursor:pointer;letter-spacing:0.04em;margin-bottom:14px;">i'm in</button>
+    <button onclick="skipOnboarding()" style="background:transparent;border:none;font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.22);cursor:pointer;padding:8px;letter-spacing:0.05em;margin-bottom:28px;">remind me later</button>
+
+    <!-- Divider -->
+    <div style="width:100%;border-top:1px solid rgba(255,255,255,0.08);margin-bottom:20px;"></div>
+
+    <!-- Beta disclaimer -->
+    <div style="width:100%;background:rgba(184,232,50,0.07);border:1px solid rgba(184,232,50,0.15);border-radius:5px;padding:12px 14px;">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:#b8e832;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px;">you're in beta</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.4);line-height:1.7;">things will break. spots will get added. frAnk is still figuring it out, just like you. your feedback is the whole point.</div>
+    </div>
+  </div>
+
+  <!-- SCREEN 2: Quick profile setup -->
+  <div id="ob-profile" style="width:100%;max-width:340px;display:none;flex-direction:column;">
+    <button onclick="showOBScreen('ob-welcome')" style="background:transparent;border:none;color:rgba(255,255,255,0.35);font-size:22px;cursor:pointer;align-self:flex-start;padding:0;margin-bottom:32px;line-height:1;">←</button>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:30px;text-transform:uppercase;color:#fff;line-height:1.1;margin-bottom:8px;">two things.<br/>that's literally it.</div>
+    <div style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.4);margin-bottom:32px;line-height:1.7;">frank doesn't need your life story.<br/>just enough to say hi.</div>
+
+    <div style="margin-bottom:12px;">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">your name</div>
+      <input id="ob-name-input" type="text" placeholder="e.g. jacob elordi" maxlength="30" autocomplete="given-name"
+        style="width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:5px;padding:13px 14px;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22px;color:#fff;outline:none;letter-spacing:0.02em;"
+        onfocus="this.style.borderColor='#b8e832';this.style.background='rgba(255,255,255,0.1)'"
+        onblur="this.style.borderColor='rgba(255,255,255,0.12)';this.style.background='rgba(255,255,255,0.07)'"
+        onkeydown="if(event.key==='Enter')document.getElementById('ob-hood-input').focus()"
+      />
+    </div>
+
+    <div style="margin-bottom:32px;">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">your neighborhood <span style="opacity:0.5;">(optional)</span></div>
+      <input id="ob-hood-input" type="text" placeholder="e.g. east austin" maxlength="40"
+        style="width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:5px;padding:13px 14px;font-family:'DM Mono',monospace;font-size:14px;color:#fff;outline:none;"
+        onfocus="this.style.borderColor='#b8e832';this.style.background='rgba(255,255,255,0.1)'"
+        onblur="this.style.borderColor='rgba(255,255,255,0.12)';this.style.background='rgba(255,255,255,0.07)'"
+        onkeydown="if(event.key==='Enter')finishOnboarding()"
+      />
+    </div>
+
+    <div id="ob-name-error" style="font-family:'DM Mono',monospace;font-size:10px;color:#ff6b6b;margin-bottom:10px;display:none;">tell frank your name first.</div>
+
+    <button onclick="finishOnboarding()" style="width:100%;background:#b8e832;color:#1c3a2a;border:none;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18px;text-transform:uppercase;padding:15px;border-radius:5px;cursor:pointer;letter-spacing:0.04em;">take me to frank</button>
+  
+</div>
+<script>
+function showOBScreen(id){
+  ['ob-welcome','ob-profile'].forEach(s=>{
+    const el=document.getElementById(s);
+    if(el) el.style.display=s===id?'flex':'none';
+  });
+}
+
+function finishOnboarding(){
+  const name=document.getElementById('ob-name-input').value.trim();
+  const err=document.getElementById('ob-name-error');
+  if(!name){ err.style.display='block'; document.getElementById('ob-name-input').style.borderColor='#ff7070'; return; }
+  err.style.display='none';
+  const hood=document.getElementById('ob-hood-input').value.trim();
+  // Save signup locally
+  const signups=JSON.parse(localStorage.getItem('frank-signups')||'[]');
+  signups.push({name, hood, ts:new Date().toISOString()});
+  localStorage.setItem('frank-signups', JSON.stringify(signups));
+  // Show success
+  const firstName=name.split(' ')[0].toLowerCase();
+  document.getElementById('ob-profile').innerHTML=`
+    <div style="text-align:center;display:flex;flex-direction:column;align-items:center;">
+      <div style="font-size:54px;margin-bottom:22px;">🎉</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:34px;text-transform:uppercase;color:#fff;margin-bottom:10px;">hey ${firstName}.<br/>you're on the list.</div>
+      <div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.45);line-height:1.9;">we'll be in touch when your spot opens up.<br/><br/>the good list doesn't advertise.<br/>word of mouth only.</div>
+    </div>`;
+}
+
+function skipOnboarding(){
+  document.querySelector('.page').innerHTML=`
+    <div style="text-align:center;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:28px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:8px;">we'll be here when you're ready.</div>
+      <button onclick="location.reload()" style="background:transparent;border:none;font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.25);cursor:pointer;margin-top:16px;">back</button>
+    </div>`;
+}
+</script>
+</body>
+</html>
