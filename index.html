@@ -79,7 +79,7 @@ input.err{border-color:#ff7070;}
     <div class="subline fu3">the best spots. straight from the people who actually go there. no scrolling through five apps to find out where to eat tonight.</div>
 
     <div style="width:100%;" class="fu4">
-      <button class="btn" data-tally-open="b5OoG1" data-tally-hide-title="1" data-tally-overlay="1" data-tally-emoji-text="👋" data-tally-emoji-animation="wave">i'm in</button>
+      <button class="btn" onclick="show('s-form')">i'm in</button>
       <div style="text-align:center;">
         <button class="skip" onclick="show('s-skip')">remind me later</button>
       </div>
@@ -148,6 +148,14 @@ function clearErr(){
   document.getElementById('f-name').classList.remove('err');
   document.getElementById('f-email').classList.remove('err');
 }
+function finishSignup(name){
+  if(window._frankDone) return;
+  window._frankDone=true;
+  const first=name.split(' ')[0].toLowerCase();
+  document.getElementById('success-head').textContent='hey '+first+'. you\'re on the list.';
+  show('s-success');
+}
+
 function submit(){
   const name=document.getElementById('f-name').value.trim();
   const email=document.getElementById('f-email').value.trim();
@@ -158,16 +166,24 @@ function submit(){
     if(!email||!email.includes('@')) document.getElementById('f-email').classList.add('err');
     return;
   }
+  // Save locally as backup
   const signups=JSON.parse(localStorage.getItem('frank-signups')||'[]');
-  signups.push({name,email,hood,ts:new Date().toISOString()});
+  signups.push({name,email,neighborhood:hood,ts:new Date().toISOString()});
   localStorage.setItem('frank-signups',JSON.stringify(signups));
-  // ── CONNECT BACKEND HERE ──────────────────────────────────
-  // fetch('/api/signup',{method:'POST',headers:{'Content-Type':'application/json'},
-  //   body:JSON.stringify({name,email,hood,ts:new Date().toISOString()})});
-  // ─────────────────────────────────────────────────────────
-  const first=name.split(' ')[0].toLowerCase();
-  document.getElementById('success-head').textContent='hey '+first+'. you\'re on the list.';
-  show('s-success');
+  // Send to Tally silently via popup API with pre-filled hidden fields
+  if(window.Tally){
+    Tally.openPopup('b5OoG1',{
+      layout:'modal',
+      width:1,
+      autoClose:500,
+      hiddenFields:{name:name,email:email,neighborhood:hood},
+      onSubmit:function(){ Tally.closePopup('b5OoG1'); finishSignup(name); },
+      onClose:function(){ finishSignup(name); }
+    });
+    setTimeout(function(){ finishSignup(name); },3000);
+  } else {
+    finishSignup(name);
+  }
 }
 </script>
 </body>
