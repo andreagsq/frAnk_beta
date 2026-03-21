@@ -9,35 +9,23 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{min-height:100%;background:#1c3a2a;font-family:'Barlow Condensed',sans-serif;color:#f5f0e8;}
 .page{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 32px;}
-
-/* screens */
 .screen{width:100%;max-width:320px;display:none;flex-direction:column;align-items:center;}
 .screen.active{display:flex;}
-
-/* ── SCREEN 1 ── */
 .logo{font-weight:800;font-size:76px;letter-spacing:-0.02em;color:#b8e832;line-height:1;text-align:center;}
 .logo span{color:#fff;}
-.tagline{font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.13em;text-align:center;margin-top:4px;margin-bottom:48px;}
-
-/* headline block — auto-sizes both lines to same width */
-.headline-block{display:flex;flex-direction:column;align-items:center;width:100%;margin-bottom:14px;}
-.hl1{font-weight:800;font-size:32px;text-transform:uppercase;color:#fff;line-height:1.05;white-space:nowrap;}
-.hl2{font-weight:800;font-size:32px;text-transform:uppercase;color:#b8e832;line-height:1.05;white-space:nowrap;}
-
-.subline{font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.42);line-height:1.85;text-align:center;margin-bottom:36px;padding:0 4px;}
-
-.btn{width:100%;background:#b8e832;color:#1c3a2a;border:none;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18px;text-transform:uppercase;padding:15px;border-radius:5px;cursor:pointer;letter-spacing:0.04em;transition:opacity 0.15s;}
+.tagline{font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.13em;text-align:center;margin-top:4px;margin-bottom:44px;}
+.hl1{font-weight:800;font-size:32px;text-transform:uppercase;color:#fff;line-height:1.05;text-align:center;}
+.hl2{font-weight:800;font-size:32px;text-transform:uppercase;color:#b8e832;line-height:1.05;text-align:center;margin-bottom:14px;}
+.subline{font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.42);line-height:1.85;text-align:center;margin-bottom:32px;}
+.btn{width:100%;background:#b8e832;color:#1c3a2a;border:none;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18px;text-transform:uppercase;padding:15px;border-radius:5px;cursor:pointer;letter-spacing:0.04em;}
 .btn:hover{opacity:0.88;}
-.skip{background:transparent;border:none;font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.45);cursor:pointer;padding:10px;letter-spacing:0.05em;margin-top:2px;text-decoration:underline;text-underline-offset:3px;}
-
+.skip{background:transparent;border:none;font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.45);cursor:pointer;padding:10px;letter-spacing:0.05em;text-decoration:underline;text-underline-offset:3px;margin-top:4px;}
 .divider{width:100%;border-top:1px solid rgba(255,255,255,0.08);margin:28px 0 22px;}
 .beta-box{width:100%;background:rgba(184,232,50,0.07);border:1px solid rgba(184,232,50,0.15);border-radius:5px;padding:13px 15px;}
 .beta-label{font-family:'DM Mono',monospace;font-size:9px;color:#b8e832;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px;}
 .beta-body{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.38);line-height:1.75;}
-
-/* ── SCREEN 2 ── */
-.back-btn{background:transparent;border:none;color:rgba(255,255,255,0.3);font-size:22px;cursor:pointer;padding:0;margin-bottom:24px;line-height:1;align-self:flex-start;}
-.form-head{font-weight:800;font-size:44px;text-transform:uppercase;color:#fff;line-height:1.05;width:100%;margin-bottom:6px;}
+.back-btn{background:transparent;border:none;color:rgba(255,255,255,0.3);font-size:22px;cursor:pointer;padding:0;margin-bottom:24px;align-self:flex-start;line-height:1;}
+.form-head{font-weight:800;font-size:42px;text-transform:uppercase;color:#fff;line-height:1.05;width:100%;margin-bottom:6px;}
 .form-sub{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.38);line-height:1.7;width:100%;margin-bottom:26px;}
 .fields{width:100%;display:flex;flex-direction:column;gap:12px;}
 .field-label{font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px;}
@@ -45,19 +33,11 @@ input{width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255
 input::placeholder{color:rgba(255,255,255,0.2);}
 input:focus{border-color:#b8e832;background:rgba(255,255,255,0.1);}
 input.err{border-color:#ff7070;}
-.err-msg{font-family:'DM Mono',monospace;font-size:10px;color:#ff7070;margin-top:6px;display:none;}
+.err-msg{font-family:'DM Mono',monospace;font-size:10px;color:#ff7070;margin-top:6px;display:none;width:100%;}
 .fine{font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.18);line-height:1.6;text-align:center;margin-top:8px;}
-
-/* ── SUCCESS ── */
 .success-emoji{font-size:52px;margin-bottom:20px;}
 .success-head{font-weight:800;font-size:34px;text-transform:uppercase;color:#fff;line-height:1.1;text-align:center;margin-bottom:12px;}
 .success-body{font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.4);line-height:1.9;text-align:center;}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-.fu{animation:fadeUp 0.4s ease forwards;}
-.fu2{animation:fadeUp 0.4s ease 0.1s both;}
-.fu3{animation:fadeUp 0.4s ease 0.2s both;}
-.fu4{animation:fadeUp 0.4s ease 0.3s both;}
 </style>
 </head>
 <body>
@@ -65,27 +45,15 @@ input.err{border-color:#ff7070;}
 
   <!-- SCREEN 1: Welcome -->
   <div class="screen active" id="s-welcome">
-    <div class="fu" style="display:flex;flex-direction:column;align-items:center;width:100%;">
-      <div class="logo">fr<span>A</span>nk</div>
-      <div class="tagline">we'll give it to you straight.</div>
-    </div>
-
-    <div class="headline-block fu2">
-      <div class="hl1">someone vouched for you.</div>
-      <div class="hl2">don't make it weird.</div>
-    </div>
-
-    <div class="subline fu3">the best spots. straight from the people who actually go there. no scrolling through five apps to find out where to eat tonight.</div>
-
-    <div style="width:100%;" class="fu4">
-      <button class="btn" onclick="show('s-form')">i'm in</button>
-      <div style="text-align:center;">
-        <button class="skip" onclick="show('s-skip')">remind me later</button>
-      </div>
-    </div>
-
-    <div class="divider fu4"></div>
-    <div class="beta-box fu4">
+    <div class="logo">fr<span>A</span>nk</div>
+    <div class="tagline">we'll give it to you straight.</div>
+    <div class="hl1">someone vouched for you.</div>
+    <div class="hl2">don't make it weird.</div>
+    <div class="subline">the best spots. straight from the people who actually go there. no scrolling through five apps to find out where to eat tonight.</div>
+    <button class="btn" onclick="goTo('s-form')">i'm in</button>
+    <button class="skip" onclick="goTo('s-skip')">remind me later</button>
+    <div class="divider"></div>
+    <div class="beta-box">
       <div class="beta-label">you're in beta</div>
       <div class="beta-body">things will break. spots will get added. frAnk is still figuring it out, just like you. your feedback is the whole point.</div>
     </div>
@@ -93,32 +61,25 @@ input.err{border-color:#ff7070;}
 
   <!-- SCREEN 2: Form -->
   <div class="screen" id="s-form">
-    <button class="back-btn" onclick="show('s-welcome')">←</button>
+    <button class="back-btn" onclick="goTo('s-welcome')">←</button>
     <div class="form-head">three things.<br/>that's it.</div>
     <div class="form-sub">so frAnk knows who you are and how to reach you when it's ready.</div>
-
     <div class="fields">
       <div>
         <div class="field-label">your name</div>
-        <input id="f-name" type="text" placeholder="e.g. jacob elordi" maxlength="40" autocomplete="given-name"
-          onkeydown="if(event.key==='Enter')document.getElementById('f-email').focus()"
-          oninput="clearErr()"/>
+        <input id="f-name" type="text" placeholder="e.g. jacob elordi" maxlength="40" autocomplete="given-name"/>
       </div>
       <div>
         <div class="field-label">email</div>
-        <input id="f-email" type="email" placeholder="hi@you.com" maxlength="80" autocomplete="email"
-          onkeydown="if(event.key==='Enter')document.getElementById('f-hood').focus()"
-          oninput="clearErr()"/>
+        <input id="f-email" type="email" placeholder="hi@you.com" maxlength="80" autocomplete="email"/>
       </div>
       <div>
         <div class="field-label">your neighborhood <span style="opacity:0.4;">(optional)</span></div>
-        <input id="f-hood" type="text" placeholder="e.g. east austin" maxlength="40"
-          onkeydown="if(event.key==='Enter')submit()"/>
+        <input id="f-hood" type="text" placeholder="e.g. east austin" maxlength="40"/>
       </div>
     </div>
-
     <div class="err-msg" id="err-msg">we need your name and email.</div>
-    <button class="btn" onclick="submit()" style="margin-top:20px;">get early access</button>
+    <button class="btn" onclick="doSubmit()" style="margin-top:20px;">get early access</button>
     <div class="fine">no spam. we'll only reach out when frAnk is ready for you.</div>
   </div>
 
@@ -132,58 +93,59 @@ input.err{border-color:#ff7070;}
   <!-- SCREEN 4: Skip -->
   <div class="screen" id="s-skip">
     <div class="success-head" style="opacity:0.35;font-size:26px;text-align:center;">we'll be here<br/>when you're ready.</div>
-    <button onclick="show('s-welcome')" style="background:transparent;border:none;font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.22);cursor:pointer;margin-top:20px;">go back</button>
+    <button onclick="goTo('s-welcome')" class="skip">go back</button>
   </div>
 
 </div>
 <script>
-function show(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+function goTo(id) {
+  var screens = document.querySelectorAll('.screen');
+  for (var i = 0; i < screens.length; i++) {
+    screens[i].classList.remove('active');
+  }
   document.getElementById(id).classList.add('active');
-  window.scrollTo(0,0);
-}
-function clearErr(){
-  document.getElementById('err-msg').style.display='none';
-  document.getElementById('f-name').classList.remove('err');
-  document.getElementById('f-email').classList.remove('err');
-}
-function finishSignup(name){
-  if(window._frankDone) return;
-  window._frankDone=true;
-  const first=name.split(' ')[0].toLowerCase();
-  document.getElementById('success-head').textContent='hey '+first+'. you\'re on the list.';
-  show('s-success');
+  window.scrollTo(0, 0);
 }
 
-function submit(){
-  const name=document.getElementById('f-name').value.trim();
-  const email=document.getElementById('f-email').value.trim();
-  const hood=document.getElementById('f-hood').value.trim();
-  if(!name||!email||!email.includes('@')){
-    document.getElementById('err-msg').style.display='block';
-    if(!name) document.getElementById('f-name').classList.add('err');
-    if(!email||!email.includes('@')) document.getElementById('f-email').classList.add('err');
+function doSubmit() {
+  var name = document.getElementById('f-name').value.trim();
+  var email = document.getElementById('f-email').value.trim();
+  var hood = document.getElementById('f-hood').value.trim();
+  var errMsg = document.getElementById('err-msg');
+  var nameInput = document.getElementById('f-name');
+  var emailInput = document.getElementById('f-email');
+
+  nameInput.classList.remove('err');
+  emailInput.classList.remove('err');
+
+  if (!name || !email || email.indexOf('@') === -1) {
+    errMsg.style.display = 'block';
+    if (!name) nameInput.classList.add('err');
+    if (!email || email.indexOf('@') === -1) emailInput.classList.add('err');
     return;
   }
-  const btn=document.querySelector('#s-form .btn');
-  btn.textContent='sending...'; btn.disabled=true;
 
-  fetch('https://formspree.io/f/xojkzwjj',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({name,email,neighborhood:hood})
-  })
-  .then(r=>r.json())
-  .then(()=>{
-    const first=name.split(' ')[0].toLowerCase();
-    document.getElementById('success-head').textContent='hey '+first+'. you're on the list.';
-    show('s-success');
-  })
-  .catch(()=>{
-    // Show success anyway — don't punish the user for a network blip
-    const first=name.split(' ')[0].toLowerCase();
-    document.getElementById('success-head').textContent='hey '+first+'. you're on the list.';
-    show('s-success');
+  errMsg.style.display = 'none';
+  var btn = document.querySelector('#s-form .btn');
+  btn.textContent = 'sending...';
+  btn.disabled = true;
+
+  var data = { name: name, email: email, neighborhood: hood };
+
+  fetch('https://formspree.io/f/xojkzwjj', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(data)
+  }).then(function(r) {
+    return r.json();
+  }).then(function() {
+    var first = name.split(' ')[0].toLowerCase();
+    document.getElementById('success-head').textContent = 'hey ' + first + '. you\'re on the list.';
+    goTo('s-success');
+  }).catch(function() {
+    var first = name.split(' ')[0].toLowerCase();
+    document.getElementById('success-head').textContent = 'hey ' + first + '. you\'re on the list.';
+    goTo('s-success');
   });
 }
 </script>
