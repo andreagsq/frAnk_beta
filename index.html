@@ -127,7 +127,7 @@ input.err{border-color:#ff7070;}
   <div class="screen" id="s-success">
     <div class="success-emoji">🎉</div>
     <div class="success-head" id="success-head">you're on the list.</div>
-    <div class="success-body">frAnk isn't live yet.<br/>we'll email you when your spot opens up.<br/><br/>the good list doesn't advertise.<br/>word of mouth only.</div>
+    <div class="success-body">not gonna lie, we're flattered.<br/>frAnk is still getting all sexy for you.<br/><br/>sit tight and keep an eye out<br/>for an email from us.<br/>we'll be in touch.</div>
   </div>
 
   <!-- SCREEN 4: Skip -->
@@ -170,17 +170,17 @@ function submit(){
   const signups=JSON.parse(localStorage.getItem('frank-signups')||'[]');
   signups.push({name,email,neighborhood:hood,ts:new Date().toISOString()});
   localStorage.setItem('frank-signups',JSON.stringify(signups));
-  // Send to Tally silently via popup API with pre-filled hidden fields
+  // Pass data to Tally via URL parameters — maps to hidden fields automatically
+  const params=`name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&neighborhood=${encodeURIComponent(hood)}`;
   if(window.Tally){
     Tally.openPopup('b5OoG1',{
       layout:'modal',
-      width:1,
-      autoClose:500,
-      hiddenFields:{name:name,email:email,neighborhood:hood},
-      onSubmit:function(){ Tally.closePopup('b5OoG1'); finishSignup(name); },
+      autoClose:800,
+      customFormUrl:`https://tally.so/r/b5OoG1?${params}`,
+      onSubmit:function(){ finishSignup(name); },
       onClose:function(){ finishSignup(name); }
     });
-    setTimeout(function(){ finishSignup(name); },3000);
+    setTimeout(function(){ finishSignup(name); },4000);
   } else {
     finishSignup(name);
   }
